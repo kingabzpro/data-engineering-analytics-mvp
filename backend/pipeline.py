@@ -1,9 +1,13 @@
 from __future__ import annotations
 
+import sys
 from pathlib import Path
 
-from backend.db import create_tables, get_connection
-from backend.models import Metrics
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.append(str(PROJECT_ROOT))
+
+from backend.db import create_tables, get_connection  # noqa: E402
+from backend.models import Metrics  # noqa: E402
 
 SQL_DIR = Path("backend") / "sql"
 

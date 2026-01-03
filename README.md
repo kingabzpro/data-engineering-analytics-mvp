@@ -40,7 +40,6 @@ streamlit run app\app.py
 From the repo root:
 
 ```powershell
-$env:PYTHONPATH='.'
 python backend\ingest.py --csv data\sample.csv
 python backend\pipeline.py
 streamlit run app\app.py
@@ -48,10 +47,9 @@ streamlit run app\app.py
 
 ## Quick verification
 
-Run the ingest twice; the row count should stay the same (50):
+Run the ingest twice; the row count should stay the same (3738):
 
 ```powershell
-$env:PYTHONPATH='.'
 python backend\ingest.py --csv data\sample.csv
 python backend\ingest.py --csv data\sample.csv
 ```
@@ -61,7 +59,6 @@ python backend\ingest.py --csv data\sample.csv
 Confirm raw and fact row counts after running the pipeline:
 
 ```powershell
-$env:PYTHONPATH='.'
 python backend\ingest.py --csv data\sample.csv
 python backend\pipeline.py
 python - <<'PY'

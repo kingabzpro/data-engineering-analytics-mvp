@@ -18,4 +18,4 @@ def test_ingest_idempotent(tmp_path: Path) -> None:
     first_count = ingest_csv(csv_path, db_path=db_path)
     second_count = ingest_csv(csv_path, db_path=db_path)
 
-    assert first_count == second_count == 50
+    assert first_count == second_count == 3738

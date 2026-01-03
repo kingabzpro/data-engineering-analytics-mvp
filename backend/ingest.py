@@ -2,10 +2,14 @@ from __future__ import annotations
 
 import argparse
 import csv
+import sys
 from datetime import datetime
 from pathlib import Path
 
-from backend.db import create_tables, get_connection
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.append(str(PROJECT_ROOT))
+
+from backend.db import create_tables, get_connection  # noqa: E402
 
 REQUIRED_COLUMNS = {"event_time", "user_id", "event_name", "category", "amount"}
 

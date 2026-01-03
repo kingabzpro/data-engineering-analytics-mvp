@@ -1,6 +1,14 @@
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
 import streamlit as st
 
-from backend.pipeline import get_daily_counts, get_metrics, run_pipeline
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.append(str(PROJECT_ROOT))
+
+from backend.pipeline import get_daily_counts, get_metrics, run_pipeline  # noqa: E402
 
 
 def build_app() -> None:

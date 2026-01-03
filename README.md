@@ -44,3 +44,23 @@ $env:PYTHONPATH='.'
 python backend\ingest.py --csv data\sample.csv
 python backend\ingest.py --csv data\sample.csv
 ```
+
+## Sanity checks
+
+Confirm raw and fact row counts after running the pipeline:
+
+```powershell
+$env:PYTHONPATH='.'
+python backend\ingest.py --csv data\sample.csv
+python backend\pipeline.py
+python - <<'PY'
+import duckdb
+
+conn = duckdb.connect("data/analytics.duckdb")
+raw_count = conn.execute("SELECT COUNT(*) FROM raw_events").fetchone()[0]
+fct_count = conn.execute("SELECT COUNT(*) FROM fct_events").fetchone()[0]
+print(f"raw_events count: {raw_count}")
+print(f"fct_events count: {fct_count}")
+conn.close()
+PY
+```

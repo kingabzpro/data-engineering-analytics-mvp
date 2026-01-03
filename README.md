@@ -34,3 +34,13 @@ python backend\ingest.py --csv data\sample.csv
 ```powershell
 streamlit run app\app.py
 ```
+
+## Quick verification
+
+Run the ingest twice; the row count should stay the same (50):
+
+```powershell
+$env:PYTHONPATH='.'
+python backend\ingest.py --csv data\sample.csv
+python backend\ingest.py --csv data\sample.csv
+```

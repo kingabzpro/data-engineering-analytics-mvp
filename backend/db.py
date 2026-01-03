@@ -8,9 +8,10 @@ DB_PATH = Path("data") / "analytics.duckdb"
 SQL_DIR = Path("backend") / "sql"
 
 
-def get_connection() -> duckdb.DuckDBPyConnection:
-    DB_PATH.parent.mkdir(parents=True, exist_ok=True)
-    return duckdb.connect(str(DB_PATH))
+def get_connection(db_path: Path | None = None) -> duckdb.DuckDBPyConnection:
+    resolved_path = db_path or DB_PATH
+    resolved_path.parent.mkdir(parents=True, exist_ok=True)
+    return duckdb.connect(str(resolved_path))
 
 
 def create_tables(conn: duckdb.DuckDBPyConnection) -> None:

@@ -30,5 +30,13 @@ def get_metrics(db_path: Path | None = None) -> Metrics:
     )
 
 
+def get_daily_counts(db_path: Path | None = None):
+    conn = get_connection(db_path)
+    daily_sql = (SQL_DIR / "030_daily_counts.sql").read_text(encoding="utf-8")
+    df = conn.execute(daily_sql).fetchdf()
+    conn.close()
+    return df
+
+
 if __name__ == "__main__":
     run_pipeline()

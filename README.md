@@ -35,6 +35,17 @@ python backend\ingest.py --csv data\sample.csv
 streamlit run app\app.py
 ```
 
+## Local Demo
+
+From the repo root:
+
+```powershell
+$env:PYTHONPATH='.'
+python backend\ingest.py --csv data\sample.csv
+python backend\pipeline.py
+streamlit run app\app.py
+```
+
 ## Quick verification
 
 Run the ingest twice; the row count should stay the same (50):
@@ -63,4 +74,12 @@ print(f"raw_events count: {raw_count}")
 print(f"fct_events count: {fct_count}")
 conn.close()
 PY
+```
+
+## Verify
+
+Rebuild the DB from scratch, ingest, transform, and run tests:
+
+```powershell
+.\scripts\verify.ps1
 ```
